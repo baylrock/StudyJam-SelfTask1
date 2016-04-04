@@ -3,14 +3,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/menu_bg"
     tools:context="com.baylrock.trainingtasks.studyjamselftask.MainActivity">
-
-    <TextView
+    <RelativeLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerInParent="true"
+        android:background="@drawable/menu"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/b1"
+            style="@style/menu_butt"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/b2"
+            android:layout_toRightOf="@id/b1"
+            style="@style/menu_butt"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/b3"
+            android:layout_below="@id/b1"
+            style="@style/menu_butt"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/b4"
+            android:layout_below="@id/b2"
+            android:layout_toRightOf="@id/b3"
+            style="@style/menu_butt"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/b5"
+            android:layout_below="@id/b3"
+            style="@style/menu_butt"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/b6"
+            android:layout_toRightOf="@id/b1"
+            android:layout_below="@id/b3"
+            style="@style/menu_butt"/>
+
+    </RelativeLayout>
 </RelativeLayout>
