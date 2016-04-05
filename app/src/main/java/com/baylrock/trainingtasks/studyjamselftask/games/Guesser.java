@@ -1,7 +1,9 @@
 package com.baylrock.trainingtasks.studyjamselftask.games;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,8 @@ import android.widget.Toast;
 
 import com.baylrock.trainingtasks.studyjamselftask.R;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,6 +30,7 @@ public class Guesser {
     private boolean inGame = false;
     private Toast main_toast;
     private int data[];
+    private LinkedHashMap <Button,Integer> dataMap;
 
     public Guesser(Activity activity) {
         this.activity = activity;
@@ -48,15 +53,19 @@ public class Guesser {
     public void guesserInit() {
         Button guess_bt;
         inGame = false;
+        dataMap = new LinkedHashMap<>();
         data  = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-
         guess_state = 1;
         gameSort(data);
+
         for (int i = 0; i < 12; i++) {
             guess_bt = guess_buts_array[i];
+            dataMap.put(guess_bt,data[i]);
             Log.d("Check butt", (String) guess_bt.getText());
+            guess_bt.setTextColor(activity.getResources().getColor(R.color.main_menu_bt));
             guess_bt.setText("" + data[i]);
             guess_bt.setEnabled(true);
+
         }
         new Timer().schedule(new GamePause(), 5000);
     }
@@ -64,7 +73,8 @@ public class Guesser {
     public void guess(View view) {
         if (!inGame) return;
         Button guess_but = (Button) view;
-        if (guess_but.equals(guess_buts_array[guess_state - 1])) {
+
+        if (dataMap.get(guess_but) == guess_state) {
             if (guess_state == 12) {
                 if (main_toast != null) main_toast.cancel();
                 main_toast = Toast.makeText(activity.getApplicationContext(), "YOU WIN!", Toast.LENGTH_SHORT);
@@ -81,9 +91,13 @@ public class Guesser {
         } else {
             setGuesButtsEnabled(false);
             Toast.makeText(activity.getApplicationContext(), "You loose!", Toast.LENGTH_LONG).show();
-            for (int i = guess_state-1; i < 12; i++) {
-                guess_buts_array[i].setText("" + data[i]);
-                guess_buts_array[i].setTextColor(Color.RED);
+            for (int i = 0; i < 12; i++) {
+                if (guess_buts_array[i].getText().equals("")) {
+                    guess_buts_array[i].setText("" + data[i]);
+                    guess_buts_array[i].setTextColor(Color.RED);
+
+                }
+
             }
             return;
         }
