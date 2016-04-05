@@ -5,26 +5,36 @@
     android:layout_height="match_parent"
     android:background="@drawable/menu_bg"
     tools:context="com.baylrock.trainingtasks.studyjamselftask.MainActivity">
-    <RelativeLayout
-        android:orientation="vertical"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView" />
+
+    <RelativeLayout
+        android:id="@+id/rel_buts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="20dp"
         android:background="@drawable/menu"
         >
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="@string/guesser"
             android:id="@+id/b1"
             style="@style/menu_butt"
+            android:onClick="startGueser"
             />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="@string/sudoku"
             android:id="@+id/b2"
             android:layout_toRightOf="@id/b1"
             style="@style/menu_butt"/>
@@ -32,7 +42,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="@string/_3d_game"
             android:id="@+id/b3"
             android:layout_below="@id/b1"
             style="@style/menu_butt"/>
@@ -40,7 +50,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="@string/_4game"
             android:id="@+id/b4"
             android:layout_below="@id/b2"
             android:layout_toRightOf="@id/b3"
@@ -49,7 +59,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="@string/info"
             android:id="@+id/b5"
             android:layout_below="@id/b3"
             style="@style/menu_butt"/>
@@ -57,11 +67,15 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="@string/exit"
             android:id="@+id/b6"
             android:layout_toRightOf="@id/b1"
             android:layout_below="@id/b3"
             style="@style/menu_butt"/>
 
     </RelativeLayout>
+
+
+
+
 </RelativeLayout>
