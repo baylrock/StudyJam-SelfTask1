@@ -7,6 +7,9 @@
     <string name="start">START</string>
     <string name="guesser_score">SCORE</string>
     <string name="menu">MENU</string>
+    <string name="in_game">IN GAME</string>
     <!-- Guesser screen -->
+    <string name="scores_save"></string>
+    <string name="memorycheck_ngame">memoryCheck\nGame</string>
 
 </resources>

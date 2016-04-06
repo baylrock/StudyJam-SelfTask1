@@ -3,58 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_test"
     tools:context="com.baylrock.trainingtasks.studyjamselftask.MainActivity">
+
     <ImageView
+        android:id="@+id/bg_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/guesser_bg" />
+
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo"
         android:layout_centerHorizontal="true"
-        android:id="@+id/imageView" />
+        android:src="@drawable/logo" />
 
     <RelativeLayout
         android:id="@+id/rel_buts"
         android:layout_width="266dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:paddingBottom="20dp"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/menu"
-        >
+        android:paddingBottom="20dp">
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/start"
             android:id="@+id/b1"
             style="@style/menu_butt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="startGueser"
-            />
-
-
-
+            android:text="@string/start" />
 
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/info"
             android:id="@+id/b5"
-            android:layout_below="@id/b1"
-            style="@style/menu_butt"/>
-
-        <Button
+            style="@style/menu_butt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/exit"
-            android:id="@+id/b6"
-            android:layout_toRightOf="@id/b5"
             android:layout_below="@id/b1"
-            style="@style/menu_butt"/>
+            android:onClick="infoLayout"
+            android:text="@string/info" />
+
+        <Button
+            android:id="@+id/b6"
+            style="@style/menu_butt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/b1"
+            android:layout_toRightOf="@id/b5"
+            android:text="@string/exit"
+            android:onClick="exit"/>
 
     </RelativeLayout>
-
-
 
 
 </RelativeLayout>

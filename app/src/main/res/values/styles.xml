@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="menu_butt" >
+    <style name="menu_butt">
         <item name="android:width">@dimen/menu_button_width</item>
         <item name="android:height">@dimen/menu_button_height</item>
         <item name="android:layout_margin">6dp</item>
@@ -17,13 +17,15 @@
         <item name="android:textColor">@color/main_menu_bt</item>
     </style>
 
-    <style name="guesser_cell" >
+    <style name="guesser_cell">
         <item name="android:width">@dimen/guesser_cell_width</item>
         <item name="android:height">@dimen/guesser_cell_height</item>
         <item name="android:layout_margin">4dp</item>
         <item name="android:padding">2dp</item>
         <item name="android:background">@drawable/guesser_cell</item>
         <item name="android:textColor">@color/main_menu_bt</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:onClick">guesser_click</item>
         <item name="android:enabled">false</item>
     </style>

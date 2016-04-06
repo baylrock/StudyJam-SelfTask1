@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import com.baylrock.trainingtasks.studyjamselftask.R;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.Timer;
@@ -27,6 +26,11 @@ public class Guesser {
     private Toast main_toast;
     private int data[];
     private LinkedHashMap <Button,Integer> dataMap;
+
+    public ScoreBoard getScoreBoard() {
+        return scoreBoard;
+    }
+
     private ScoreBoard scoreBoard = new ScoreBoard();
 
     public Guesser(Activity activity) {
@@ -35,8 +39,9 @@ public class Guesser {
     }
 
 
-
-
+    /**
+     * Game preparing. Loading buttons in array.
+     */
     public void startGueser() {
 
         for (int i = 1; i < 13; i++) {
@@ -47,6 +52,9 @@ public class Guesser {
         }
     }
 
+    /**
+     * Game initiating. Preparing and demonstrating guessing data.
+     */
     public void guesserInit() {
         Button guess_bt;
         inGame = false;
@@ -58,7 +66,6 @@ public class Guesser {
         for (int i = 0; i < 12; i++) {
             guess_bt = guess_buts_array[i];
             dataMap.put(guess_bt,data[i]);
-            Log.d("Check butt", (String) guess_bt.getText());
             guess_bt.setTextColor(activity.getResources().getColor(R.color.main_menu_bt));
             guess_bt.setText("" + data[i]);
             guess_bt.setEnabled(true);
@@ -67,6 +74,11 @@ public class Guesser {
         new Timer().schedule(new GamePause(), 5000);
     }
 
+    /**
+     *
+     * @param view
+     * Checking users guess and game progress.
+     */
     public void guess(View view) {
         if (!inGame) return;
         Button guess_but = (Button) view;
@@ -75,9 +87,9 @@ public class Guesser {
             if (guess_state == 12) {
                 if (main_toast != null) main_toast.cancel();
                 main_toast = Toast.makeText(activity.getApplicationContext(), "YOU WIN!", Toast.LENGTH_SHORT);
-                scoreBoard.addScore(guess_state);
+                scoreBoard.addScore(guess_state-1);
                 main_toast.show();
-                setGuesButtsEnabled(false);
+                setGuessButtsEnabled(false);
 
             } else {
                 if (main_toast != null) main_toast.cancel();
@@ -87,13 +99,14 @@ public class Guesser {
             }
 
         } else {
-            setGuesButtsEnabled(false);
+            setGuessButtsEnabled(false);
             Toast.makeText(activity.getApplicationContext(), "You loose!", Toast.LENGTH_LONG).show();
+            scoreBoard.addScore(guess_state-1);
             for (int i = 0; i < 12; i++) {
                 if (guess_buts_array[i].getText().equals("")) {
                     guess_buts_array[i].setText("" + data[i]);
                     guess_buts_array[i].setTextColor(Color.RED);
-                    scoreBoard.addScore(guess_state);
+
 
                 }
 
@@ -104,32 +117,41 @@ public class Guesser {
         guess_but.setText("" + guess_state++);
     }
 
-    private void setGuesButtsEnabled(boolean state) {
+    private void setGuessButtsEnabled(boolean state) {
         for (int i = 0; i < 12; i++) {
             guess_buts_array[i].setEnabled(state);
         }
     }
 
-    private void setGuesButtsText(String text) {
+    private void setGuessButtsText(String text) {
         for (int i = 0; i < 12; i++) {
             guess_buts_array[i].setText(text);
         }
     }
 
 
+    /**
+     * Making delay for memorize the task/numbers
+     */
     class GamePause extends TimerTask {
         @Override
         public void run() {
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    setGuesButtsText("");
+                    setGuessButtsText("");
                     inGame = true;
                 }
             });
 
         }
     }
+
+    /**
+     *
+     * @param data array for sorting
+     * Random array sort for making task
+     */
 
     private void gameSort(int[] data) {
         Random rnd = new Random();
