@@ -1,11 +1,7 @@
 package com.baylrock.trainingtasks.studyjamselftask.games;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +27,7 @@ public class Guesser {
     private Toast main_toast;
     private int data[];
     private LinkedHashMap <Button,Integer> dataMap;
+    private ScoreBoard scoreBoard = new ScoreBoard();
 
     public Guesser(Activity activity) {
         this.activity = activity;
@@ -78,6 +75,7 @@ public class Guesser {
             if (guess_state == 12) {
                 if (main_toast != null) main_toast.cancel();
                 main_toast = Toast.makeText(activity.getApplicationContext(), "YOU WIN!", Toast.LENGTH_SHORT);
+                scoreBoard.addScore(guess_state);
                 main_toast.show();
                 setGuesButtsEnabled(false);
 
@@ -95,6 +93,7 @@ public class Guesser {
                 if (guess_buts_array[i].getText().equals("")) {
                     guess_buts_array[i].setText("" + data[i]);
                     guess_buts_array[i].setTextColor(Color.RED);
+                    scoreBoard.addScore(guess_state);
 
                 }
 

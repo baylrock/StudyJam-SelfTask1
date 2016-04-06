@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private Button[] guess_buts_array = new Button[12];
     private boolean inGame = false;
     private Toast main_toast;
-    Guesser guesser_game;
+    private Guesser guesser_game;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         }
         guesser_game.guess(view);
 
+    }
+
+    public void scoreBoardLayout() {
+        setContentView(R.layout.guesser_layout);
     }
 
 }
